@@ -29,4 +29,7 @@ export class ContactService {
     return this.http.put<Contact>(this.url, obj);
   }
 
+  deleteById(id:Number):Observable<void>{
+    return this.http.delete<void>(this.url+id);
+  }
 }
