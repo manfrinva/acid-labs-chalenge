@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title style="align-items: center;">Contact Data</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="createContact()" #form="ngForm">
+      <mat-form-field>
+        <input matInput placeholder="Name" id = "name" name="name" [(ngModel)]="contact.nome" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Telephone" id = "phone" name="phone" [(ngModel)]="contact.telefone" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" *ngIf="!bnt">Save</button>
+      <button mat-raised-button color="primary" (click)="updateContact(contact)" *ngIf="bnt">Update</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<div class="table-container" id = "tbl">
+<table class = "mat-elevation-z8 demo-table">
+  <thead matColumnDef="demo-position">
+    <tr>
+      <th >#</th>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th >Edit</th>
+      <th >Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of contacts; index as i">
+      <td>{{i+1}}</td>
+      <td>{{c.nome}}</td>
+      <td>{{c.telefone}}</td>
+      <td>{{c.id}}</td>
+      <td >
+        <button mat-raised-button color="primary" class="edit-button" name = "edit-button" (click)="selectContactById(c.id)">Edit</button>
+      </td>
+      <td>
+        <button mat-raised-button color="primary" class="delete-button" name = "delete-button" (click)="deleteContact(c.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+

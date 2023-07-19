@@ -1,0 +1,26 @@
+<div class="background">
+  <div class="container">
+    <form class="login-form">
+      <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_718/https://acidlabs.com/wp-content/uploads/2022/10/cropped-logo-acid-labs-mix.png" alt="Acid Labs Logo">
+      <mat-form-field class="input-field">
+        <input matInput placeholder="E-mail" type="email">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          E-mail inválido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Campo obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Campo obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+    </form>
+  </div>
+</div>
