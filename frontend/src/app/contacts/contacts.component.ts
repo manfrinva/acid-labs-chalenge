@@ -66,5 +66,9 @@ export class ContactsComponent {
     alert('Contact deleted!')
     location.reload();
   }
-
+  
+  cancelUpdate(){
+    location.reload();
+  }
+  
 }
