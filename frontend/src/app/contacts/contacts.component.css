@@ -36,3 +36,12 @@ th, td {
 .table-container {
   margin: 20px;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  text-align: center;
+}
