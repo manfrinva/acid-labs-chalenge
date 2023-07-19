@@ -11,18 +11,12 @@ import { ContactService } from '../service/contact.service';
 
 })
 export class ContactsComponent {
+  showButton:boolean = false;
 
-  bnt:boolean = false;
-
-  //contact Object
   contact: Contact = new Contact();
-
-  //Contacts JSON
   contacts:Contact[] = [];
-
   constructor(private service:ContactService){}
 
-  //Selection method
   selectAllContact():void{
     this.service.selectAll()
     .subscribe(retorno => this.contacts = retorno);
@@ -39,11 +33,7 @@ export class ContactsComponent {
 
   selectContactById(id:Number){
     this.service.selectById(id)
-    .subscribe(retorno => //this.contact = retorno);
-      {
-        this.contact = retorno;
-        console.log(retorno);
-      });
+    .subscribe(retorno => this.contact = retorno);
   }
 
   createContact():void{
@@ -54,61 +44,27 @@ export class ContactsComponent {
       });
   }
 
-  updateContact(edit: Contact){
-    //this.selectContactById(id);
-
-  }
-
-  deleteContact(id: Number){}
-
-
-
-  editOrCreatContact(i: Number){
-    const newName = document.getElementById('name') as HTMLInputElement;
-    const newPhone = document.getElementById('phone') as HTMLInputElement;
+  updateContact(id: Number){
+    this.selectContactById(id);
+    this.showButton = true;
     const table = document.getElementById('tbl') as HTMLInputElement;
     table.style.visibility = "hidden";
-    this.bnt = true;
-
-    alert('Contact saved!');
-    this.contact = new Contact();
-    table.style.visibility = "visable";
   }
 
-  editContact(c: Contact){
-    this.service.updateContact(this.contact)
-        .subscribe(retorno => {
-        let id = this.contacts.findIndex(obj => {
-          return obj.id == retorno.id;
-        });
-        this.contacts[id] = retorno;
-      });
+  updateInformatio(){
+    if(this.contact.nome !="" || this.contact.telefone !=""){
+      this.service.updateContact(this.contact).subscribe();
+      alert('Contact information updated!')
+      location.reload();
+    } else{
+      alert('Please insert the contact information!');
+    }
   }
-/*
-  selectContact(i:number):void{
-    const newName = document.getElementById('name') as HTMLInputElement;
-    const newPhone = document.getElementById('phone') as HTMLInputElement;
-    const table = document.getElementById('tbl') as HTMLInputElement;
-    table.style.visibility = "hidden"
-    newName.value = this.contacts[i].nome;
-    newPhone.value = this.contacts[i].telefone;
+
+  deleteContact(id: Number):void{
+    this.service.deleteById(id).subscribe();
+    alert('Contact deleted!')
+    location.reload();
   }
-/*
-  editContact(i:number):void{
-    this.selectContact(i);
-
-    this.service.updateContact(this.contact)
-    .subscribe(retorno => {
-      let id = this.contacts.findIndex(obj => {
-        return obj.id == retorno.id;
-      });
-      this.contacts[id] = retorno;
-
-      this.contact = new Contact();
-      alert('Contact saved!');
-    });
-
-  }
-*/
 
 }
