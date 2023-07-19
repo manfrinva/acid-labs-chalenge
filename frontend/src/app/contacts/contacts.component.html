@@ -13,6 +13,7 @@
         </mat-form-field>
         <button mat-raised-button color="Accent" type="submit" *ngIf="!showButton" name="saveButton">Save</button>
         <button mat-raised-button color="Accent" (click)="updateInformatio()" *ngIf="showButton">Update</button>
+        <button mat-raised-button color="warn" (click)="cancelUpdate()" *ngIf="showButton">Cancel</button>
       </form>
     </mat-card-content>
   </mat-card>
