@@ -1,0 +1,47 @@
+.add-button {
+  width: 200px;
+}
+
+.input-field {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.form {
+  padding: auto;
+  margin: auto;
+  orientation: center;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+table {
+  margin: 20px;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-container {
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  text-align: center;
+}

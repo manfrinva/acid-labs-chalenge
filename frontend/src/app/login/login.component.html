@@ -1,0 +1,23 @@
+<div class="background">
+  <div class="container">
+    <form class="login-form">
+      <img src= '../..assets/Logo.jpeg' alt="Acid Labs Logo">
+      <mat-form-field class="input-field">
+        <input matInput placeholder="ID Number" type="text" name="login" [(ngModel)]="userLogin.id">
+        <mat-error *ngIf="idNumberFormControl.hasError('required')">
+          Mandatory Field
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'" name="senha" [(ngModel)]="userLogin.password">
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Mandatory Field
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+    </form>
+  </div>
+</div>
